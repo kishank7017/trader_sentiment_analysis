@@ -1,0 +1,10 @@
+{
+  "sentiment_distribution": {
+    "Fear": 781,
+    "Greed": 633,
+    "Extreme Fear": 508,
+    "Neutral": 396,
+    "Extreme Greed": 326
+  },
+  "performance_by_sentiment": {
+    
