@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "total_records": 1500,
+    "total_days": 180
+  },
+  "insights": {
+    "total_days_analyzed": 180,
+    "date_range": { "start": "2024-01-01", "end": "2024-06-29" },
+    "risk_metrics": {
+      "total_pnl": 15400.50,
+      "total_trades": 450,
+      "win_rate": 58.5,
+      "total_volume": 850000,
+      "avg_trade_size": 1888.89,
+      "sharpe_ratio": 1.45
+    },
+    "performance_by_sentiment": {
+      "Extreme Fear": { "avg_pnl_pct": 2.15, "total_pnl": 3200, "win_rate": 62.5, "trade_count": 40,  "volume": 75000 },
+      "Fear":         { "avg_pnl_pct": 1.85, "total_pnl": 5600, "win_rate": 60.2, "trade_count": 120, "volume": 250000 },
+      "Neutral":      { "avg_pnl_pct": 1.20, "total_pnl": 3200, "win_rate": 55.0, "trade_count": 150, "volume": 300000 },
+      "Greed":        { "avg_pnl_pct": 0.85, "total_pnl": 2200, "win_rate": 52.5, "trade_count": 100, "volume": 150000 },
+      "Extreme Greed":{ "avg_pnl_pct": -0.50,"total_pnl": 1200, "win_rate": 48.5, "trade_count": 40,  "volume": 75000 }
+    },
+    "correlations": {
+      "sentiment_value_vs_pnl": 0.342,
+      "momentum_vs_returns": 0.285,
+      "volatility_vs_returns": -0.165
+    },
+    "sentiment_distribution": {
+      "Fear": 140,
+      "Neutral": 95,
+      "Greed": 60,
+      "Extreme Fear": 35,
+      "Extreme Greed": 15
+    },
+    "recommendations": [
+      {
+        "title": "Best Sentiment Environment",
+        "description": "Trading performance is highest during Extreme Fear sentiment.",
+        "action": "Increase position sizing and take more trades during Extreme Fear phases."
+      },
+      {
+        "title": "Worst Sentiment Environment",
+        "description": "Trading performance is lowest during Extreme Greed sentiment.",
+        "action": "Reduce risk or avoid trading during Extreme Greed phases."
+      },
+      {
+        "title": "Solid Win Rate",
+        "description": "Current win rate is 58.5%, above the 50% breakeven threshold.",
+        "action": "Maintain discipline; consider a modest increase in position size."
+      },
+      {
+        "title": "High Volatility Strategy",
+        "description": "Trading performance improves during high-volatility periods.",
+        "action": "Increase activity and size during volatile market conditions."
+      }
+    ]
+  }
+}

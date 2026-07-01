@@ -1,0 +1,228 @@
+:root{
+  --bg: #0B1220;
+  --panel: #121B2E;
+  --panel-raised: #16213A;
+  --line: #24314B;
+  --line-soft: #1B2740;
+  --gold: #D4A24C;
+  --gold-soft: rgba(212,162,76,0.14);
+  --green: #4ADE80;
+  --red: #F87171;
+  --text: #EAEFF7;
+  --text-dim: #8FA0BC;
+  --text-faint: #55698C;
+  --extreme-fear: #C0392B;
+  --fear: #E0724B;
+  --neutral: #D4A24C;
+  --greed: #7FB88A;
+  --extreme-greed: #3FA36B;
+  --radius: 10px;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+  background:
+    radial-gradient(1200px 600px at 15% -10%, rgba(212,162,76,0.07), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(79,120,222,0.08), transparent 55%),
+    var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+::selection{ background: var(--gold-soft); color: var(--gold); }
+
+a{ color: inherit; }
+
+.mono{ font-family: 'IBM Plex Mono', monospace; font-variant-numeric: tabular-nums; }
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position: sticky; top:0; z-index: 50;
+  background: rgba(11,18,32,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-inner{
+  max-width: 1240px; margin: 0 auto; padding: 14px 28px;
+  display:flex; align-items:center; justify-content:space-between; gap: 20px;
+}
+.brand{ display:flex; align-items:center; gap:10px; }
+.brand-mark{
+  width: 30px; height: 30px; border-radius: 7px;
+  background: linear-gradient(135deg, var(--gold), #8a6a2f);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Space Grotesk', sans-serif; font-weight:700; color:#0B1220; font-size:14px;
+}
+.brand-name{ font-family:'Space Grotesk', sans-serif; font-weight:600; letter-spacing:0.02em; font-size:15px; }
+.brand-name span{ color: var(--text-dim); font-weight:400; }
+
+.nav-tabs{ display:flex; gap: 4px; }
+.nav-tabs button{
+  background:none; border:none; color: var(--text-dim); font-family:'Inter';
+  font-size: 13px; font-weight:500; padding: 7px 14px; border-radius: 7px;
+  cursor:pointer; transition: all .18s ease; letter-spacing:0.01em;
+}
+.nav-tabs button:hover{ color: var(--text); background: var(--panel-raised); }
+.nav-tabs button.active{ color: var(--gold); background: var(--gold-soft); }
+
+.live-pill{
+  display:flex; align-items:center; gap:7px; font-size:12px; color: var(--text-dim);
+  font-family:'IBM Plex Mono'; padding: 6px 11px; border:1px solid var(--line); border-radius: 20px;
+}
+.live-dot{ width:7px; height:7px; border-radius:50%; background: var(--green); box-shadow: 0 0 0 0 rgba(74,222,128,.6); animation: pulse 2s infinite; }
+@keyframes pulse{
+  0%{ box-shadow: 0 0 0 0 rgba(74,222,128,.55); }
+  70%{ box-shadow: 0 0 0 7px rgba(74,222,128,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+}
+
+.container{ max-width: 1240px; margin: 0 auto; padding: 0 28px 80px; }
+
+/* ---------- Hero ---------- */
+.hero{
+  display:grid; grid-template-columns: 1.15fr 0.85fr; gap: 32px;
+  padding: 56px 0 44px; align-items:center;
+  border-bottom: 1px solid var(--line-soft);
+}
+.eyebrow{
+  font-family:'IBM Plex Mono'; font-size:12px; color: var(--gold); letter-spacing: 0.14em;
+  text-transform: uppercase; display:flex; align-items:center; gap:10px; margin-bottom:18px;
+}
+.eyebrow::before{ content:''; width:22px; height:1px; background: var(--gold); }
+
+.hero h1{
+  font-family:'Space Grotesk', sans-serif; font-weight:600; font-size: 2.7em;
+  letter-spacing: -0.01em; line-height:1.12; margin-bottom: 18px;
+}
+.hero h1 em{ font-style:normal; color: var(--gold); }
+.hero p.lede{ color: var(--text-dim); font-size: 1.03em; max-width: 480px; margin-bottom: 26px; }
+
+.hero-metrics{ display:flex; gap: 30px; }
+.hero-metric-label{ font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-faint); margin-bottom:5px; }
+.hero-metric-value{ font-family:'Space Grotesk'; font-size:1.5em; font-weight:600; }
+
+/* Gauge */
+.gauge-card{
+  background: var(--panel); border:1px solid var(--line); border-radius: 16px;
+  padding: 26px 26px 20px; text-align:center; position:relative; overflow:hidden;
+}
+.gauge-card::before{
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(circle at 50% 0%, rgba(212,162,76,0.10), transparent 65%);
+  pointer-events:none;
+}
+.gauge-title{ font-size:12px; text-transform:uppercase; letter-spacing:0.1em; color: var(--text-dim); margin-bottom: 4px; }
+.gauge-sub{ font-size: 11px; color: var(--text-faint); margin-bottom: 6px; }
+.gauge-wrap{ position:relative; width: 100%; max-width: 280px; margin: 0 auto; }
+.gauge-readout{ position:absolute; left:50%; bottom:6px; transform:translateX(-50%); text-align:center; }
+.gauge-value{ font-family:'Space Grotesk'; font-size: 2.3em; font-weight:700; line-height:1; }
+.gauge-label{ font-family:'IBM Plex Mono'; font-size: 12.5px; margin-top:4px; letter-spacing:0.03em; }
+
+/* ---------- Section shell ---------- */
+.section{ padding: 56px 0; border-bottom: 1px solid var(--line-soft); }
+.section:last-child{ border-bottom:none; }
+.section-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom: 26px; flex-wrap:wrap; gap:10px; }
+.section-head h2{ font-family:'Space Grotesk'; font-weight:600; font-size: 1.5em; letter-spacing:-0.01em; }
+.section-num{ font-family:'IBM Plex Mono'; color: var(--text-faint); font-size:12px; }
+.section-desc{ color: var(--text-dim); font-size: 0.94em; max-width: 560px; margin-bottom: 26px; }
+
+/* ---------- Stats grid ---------- */
+.stats-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(190px,1fr)); gap:16px; }
+.stat-card{
+  background: var(--panel); border:1px solid var(--line); border-radius: var(--radius);
+  padding: 20px; transition: border-color .18s ease, transform .18s ease;
+}
+.stat-card:hover{ border-color: var(--gold); transform: translateY(-3px); }
+.stat-label{ font-size:11px; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-faint); margin-bottom:10px; }
+.stat-value{ font-family:'Space Grotesk'; font-size:1.7em; font-weight:600; }
+.stat-sub{ font-size:12px; color: var(--text-dim); margin-top:6px; }
+.up{ color: var(--green); } .down{ color: var(--red); }
+
+/* ---------- Sentiment chips ---------- */
+.chip-row{ display:flex; gap:10px; flex-wrap:wrap; }
+.chip{
+  border:1px solid var(--line); background: var(--panel); border-radius: 10px;
+  padding: 13px 18px; cursor:pointer; transition: all .18s ease; flex:1; min-width:140px;
+  position:relative; overflow:hidden;
+}
+.chip::before{ content:''; position:absolute; left:0; top:0; bottom:0; width:4px; }
+.chip[data-key="Extreme Fear"]::before{ background: var(--extreme-fear); }
+.chip[data-key="Fear"]::before{ background: var(--fear); }
+.chip[data-key="Neutral"]::before{ background: var(--neutral); }
+.chip[data-key="Greed"]::before{ background: var(--greed); }
+.chip[data-key="Extreme Greed"]::before{ background: var(--extreme-greed); }
+.chip:hover{ transform: translateY(-2px); border-color: var(--text-faint); }
+.chip.active{ border-color: var(--gold); background: var(--gold-soft); }
+.chip-name{ font-size:13px; font-weight:600; margin-bottom:3px; }
+.chip-count{ font-family:'IBM Plex Mono'; font-size:12px; color: var(--text-dim); }
+.chip-bar{ height:3px; background: var(--line); border-radius:2px; margin-top:9px; overflow:hidden; }
+.chip-bar-fill{ height:100%; border-radius:2px; transition: width .6s ease; }
+
+/* ---------- Chart card ---------- */
+.chart-tabs{ display:flex; gap:6px; margin-bottom: 18px; }
+.chart-tabs button{
+  background: var(--panel); border:1px solid var(--line); color: var(--text-dim);
+  padding: 8px 15px; border-radius:8px; font-size:12.5px; cursor:pointer; font-family:'Inter'; font-weight:500;
+  transition: all .18s ease;
+}
+.chart-tabs button:hover{ color:var(--text); }
+.chart-tabs button.active{ background: var(--gold-soft); color: var(--gold); border-color: rgba(212,162,76,0.4); }
+.chart-card{
+  background: var(--panel); border:1px solid var(--line); border-radius: var(--radius);
+  padding: 22px; height: 380px; position:relative;
+}
+
+/* ---------- Recommendations ---------- */
+.rec-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:14px; }
+.rec-card{
+  background: var(--panel); border:1px solid var(--line); border-radius: var(--radius);
+  padding: 20px; border-left: 3px solid var(--gold);
+}
+.rec-card h4{ font-family:'Space Grotesk'; font-size:1.02em; font-weight:600; margin-bottom:8px; }
+.rec-card p{ color: var(--text-dim); font-size: 0.9em; margin-bottom: 10px; }
+.rec-action{ font-size:12.5px; color: var(--gold); font-weight:600; display:flex; gap:7px; align-items:flex-start; }
+
+/* ---------- Table ---------- */
+.table-wrap{ background: var(--panel); border:1px solid var(--line); border-radius: var(--radius); overflow:hidden; }
+table{ width:100%; border-collapse:collapse; }
+thead th{
+  text-align:left; padding: 14px 18px; font-size:11px; text-transform:uppercase;
+  letter-spacing:0.06em; color: var(--text-faint); border-bottom:1px solid var(--line);
+  cursor:pointer; user-select:none; white-space:nowrap;
+}
+thead th:hover{ color: var(--gold); }
+thead th .arrow{ opacity:0.35; margin-left:4px; font-size:10px; }
+thead th.sorted .arrow{ opacity:1; color: var(--gold); }
+tbody td{ padding: 14px 18px; border-bottom:1px solid var(--line-soft); font-size: 13.5px; }
+tbody tr{ transition: background .15s ease, opacity .25s ease; }
+tbody tr:hover{ background: var(--panel-raised); }
+tbody tr:last-child td{ border-bottom:none; }
+tbody tr.dimmed{ opacity: 0.28; }
+.tag{ display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600; }
+.dot{ width:8px; height:8px; border-radius:50%; }
+
+footer{
+  text-align:center; color: var(--text-faint); padding: 30px 20px; font-size: 12.5px;
+  font-family:'IBM Plex Mono';
+}
+footer a{ color: var(--gold); text-decoration:none; }
+
+.loading{ text-align:center; padding: 100px 20px; color: var(--text-dim); }
+.spinner{ border: 3px solid var(--line); border-top: 3px solid var(--gold); border-radius:50%; width:34px; height:34px; animation: spin 0.9s linear infinite; margin: 0 auto 18px; }
+@keyframes spin{ to{ transform: rotate(360deg); } }
+
+[data-animate]{ opacity:0; transform: translateY(14px); transition: opacity .55s ease, transform .55s ease; }
+[data-animate].in{ opacity:1; transform: none; }
+
+@media (max-width: 860px){
+  .hero{ grid-template-columns: 1fr; }
+  .nav-tabs{ display:none; }
+  .hero h1{ font-size: 2em; }
+  .container{ padding: 0 18px 60px; }
+  .chart-card{ height:300px; }
+}
