@@ -250,4 +250,5 @@ jupyter==1.0.0
 ipython==8.14.0
 fastapi>=0.110
 uvicorn[standard]>=0.29
+fastapi
 
